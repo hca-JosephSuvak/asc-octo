@@ -1,4 +1,15 @@
-.card {
+.card-deck .card {
     min-width:fit-content;
     max-width:fit-content;
+    margin: 0 auto;
+    margin-bottom: 20px !important;
+    justify-content: center;
+}
+
+.btn{
+    background-color: #75B229;
+}
+
+body{
+    background-color: black;
 }
