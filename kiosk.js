@@ -5,7 +5,7 @@ function createCard(imageAssets) {
       <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
-          <button type="button" class="btn btn-primary">Print</button>
+          <button type="button" class="btn btn-primary" onclick=console.log("${i.octoFilePath}")>Print</button>
         </div>
     </div>
     `;
@@ -49,23 +49,23 @@ function loadfirstpage(Email, Terms) {
 const imageAssets = [
   {
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo",
-    title: "Cat",
+    octoFilePath: "assets/octo1",
+    title: "Cat 1",
   },
   {
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo",
-    title: "Cat",
+    octoFilePath: "assets/octo2",
+    title: "Cat 2",
   },
   {
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo",
-    title: "Cat",
+    octoFilePath: "assets/octo3",
+    title: "Cat 3",
   },
   {
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo",
-    title: "Cat",
+    octoFilePath: "assets/octo4",
+    title: "Cat 4",
   },
   /*{
         "imagePath":"assets/img",
