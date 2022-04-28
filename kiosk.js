@@ -1,9 +1,14 @@
 function createCard(imageAssets) {
   const assets = imageAssets.map((i) => {
-    return `<img src="${i.imagePath}" class="card card-img-top" alt="...">
+    return `
+    <div class="card" style="width: 18rem;">
+      <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
-        </div>`;
+          <button type="button" class="btn btn-primary">Print</button>
+        </div>
+    </div>
+    `;
   });
   return assets.join("");
 }
