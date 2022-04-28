@@ -54,11 +54,12 @@ async function isPrintQueueFull(){
   let isQueueFull = false;
   let res = await fetch("http://raspi.local/plugin/continuousprint/state", {
     method: "GET",
-    Authorization: "Bearer AC2A27BA72C541EFB2E52AAE3D001AB1",
-    mode: "no-cors"
+    headers: {
+      Authorization: "Bearer AC2A27BA72C541EFB2E52AAE3D001AB1",
+    },
   })
-  let response = res.json();
-  if(response.queue.length >= 4){
+  let response = await res.json();
+  if(response.queue.length >= 6){
     isQueueFull = true
   }
   else {

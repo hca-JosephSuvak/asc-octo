@@ -13,9 +13,12 @@
     <div id="card-div" class="container card-deck">
     </div>
     <script>
-        const cardHtml = createCard(imageAssets);
-        element = document.querySelector("#card-div")
-        element.innerHTML = cardHtml
+        async function render (){
+            const cardHtml = await createCard(imageAssets);
+            element = document.querySelector("#card-div")
+            element.innerHTML = cardHtml
+        }
+        render()
     </script>
 </body>
 </html>
