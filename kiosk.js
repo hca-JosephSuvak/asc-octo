@@ -1,4 +1,8 @@
-function createCard(imageAssets) {
+async function createCard(imageAssets) {
+  let isQueueFull = await isPrintQueueFull()
+  if(isQueueFull){
+    return "<h1>Sorry, the print queue is full</h1>"
+  }
   const assets = imageAssets.map((i) => {
     return `
     <div class="card" style="width: 18rem;">
@@ -48,9 +52,13 @@ function loadfirstpage(Email, Terms) {
 
 async function isPrintQueueFull(){
   let isQueueFull = false;
-  let res = await fetch("http://raspi.local//plugin/continuousprint/state")
+  let res = await fetch("http://raspi.local/plugin/continuousprint/state", {
+    method: "GET",
+    Authorization: "Bearer AC2A27BA72C541EFB2E52AAE3D001AB1",
+    mode: "no-cors"
+  })
   let response = res.json();
-  if(response.queue.length >= 6){
+  if(response.queue.length >= 4){
     isQueueFull = true
   }
   else {
@@ -58,6 +66,8 @@ async function isPrintQueueFull(){
   }
   return isQueueFull
 }
+
+
 
 const imageAssets = [
   {
