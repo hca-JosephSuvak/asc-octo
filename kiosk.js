@@ -5,7 +5,7 @@ async function createCard(imageAssets) {
   }
   const assets = imageAssets.map((i) => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
@@ -74,113 +74,51 @@ const imageAssets = [
   {
     imagePath: "assets/img/CaliCat.png",
     octoFilePath: "assets/octo1",
-    title: "Cat 1",
+    title: "Cali Cat",
   },
   {
-    imagePath: "assets/img/CaliCat.png",
+    imagePath: "assets/img/CrystalGem.png",
     octoFilePath: "assets/octo2",
-    title: "Cat 2",
+    title: "Crystal Gem",
   },
   {
-    imagePath: "assets/img/CaliCat.png",
+    imagePath: "assets/img/20die.png",
     octoFilePath: "assets/octo3",
-    title: "Cat 3",
+    title: "20-sided die",
   },
   {
-    imagePath: "assets/img/CaliCat.png",
+    imagePath: "assets/img/Fidgetgear.png",
     octoFilePath: "assets/octo4",
-    title: "Cat 4",
+    title: "Fidget Gears",
   },
-  /*{
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },
-    {
-        "imagePath":"assets/img",
-        "octoFilePath" : "assets/octo"
-    },*/
+  {
+    imagePath: "assets/img/FlexSnake.png",
+    octoFilePath: "assets/octo4",
+    title: "Flexible Snake",
+  },
+  {
+    imagePath: "assets/img/OwlBookmark.png",
+    octoFilePath: "assets/octo4",
+    title: "Owl Bookmark",
+  },
+  {
+    imagePath: "assets/img/PoopEmoji.png",
+    octoFilePath: "assets/octo4",
+    title: "Poop Emoji",
+  },
+  {
+    imagePath: "assets/img/Spinner.png",
+    octoFilePath: "assets/octo4",
+    title: "Spinner Top",
+  },
+  {
+    imagePath: "assets/img/StegosaurusCard.png",
+    octoFilePath: "assets/octo4",
+    title: "Dino Model Set",
+  },
+  {
+    imagePath: "assets/img/TinyBot.png",
+    octoFilePath: "assets/octo4",
+    title: "Tiny Bot Set",
+  },
 ];
