@@ -1,24 +1,22 @@
-
-
-function createCard(imageAssets){
-    const assets = imageAssets.map(i=> {
-        return `<img src="${i.imagePath}" class="card card-img-top" alt="...">
+function createCard(imageAssets) {
+  const assets = imageAssets.map((i) => {
+    return `<img src="${i.imagePath}" class="card card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
-        </div>`
-    })
-    return assets.join("")
+        </div>`;
+  });
+  return assets.join("");
 }
 
 function loadfirstpage(Email, Terms) {
-    let terms = Terms;
-    let email = Email;
+  let terms = Terms;
+  let email = Email;
 
-    if (email === null) {
-        return 
-    }
-    if (terms === null) {
-        return `
+  if (email === null) {
+    return;
+  }
+  if (terms === null) {
+    return `
         < div className = "modal" tabIndex = "-1" >
         < div className = "modal-dialog" >
         < div className = "modal-content" >
@@ -39,18 +37,32 @@ function loadfirstpage(Email, Terms) {
     </div>
     </div>
     }
-        `
-    }
-
+        `;
+  }
 }
 
 const imageAssets = [
-    {
-        "imagePath":"assets/img/CaliCat.png",
-        "octoFilePath" : "assets/octo",
-        "title" : "Cat"
-    },
-    /*{
+  {
+    imagePath: "assets/img/CaliCat.png",
+    octoFilePath: "assets/octo",
+    title: "Cat",
+  },
+  {
+    imagePath: "assets/img/CaliCat.png",
+    octoFilePath: "assets/octo",
+    title: "Cat",
+  },
+  {
+    imagePath: "assets/img/CaliCat.png",
+    octoFilePath: "assets/octo",
+    title: "Cat",
+  },
+  {
+    imagePath: "assets/img/CaliCat.png",
+    octoFilePath: "assets/octo",
+    title: "Cat",
+  },
+  /*{
         "imagePath":"assets/img",
         "octoFilePath" : "assets/octo"
     },
@@ -142,4 +154,4 @@ const imageAssets = [
         "imagePath":"assets/img",
         "octoFilePath" : "assets/octo"
     },*/
-]
+];
