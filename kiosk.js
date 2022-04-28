@@ -46,6 +46,19 @@ function loadfirstpage(Email, Terms) {
   }
 }
 
+async function isPrintQueueFull(){
+  let isQueueFull = false;
+  let res = await fetch("http://raspi.local//plugin/continuousprint/state")
+  let response = res.json();
+  if(response.queue.length >= 6){
+    isQueueFull = true
+  }
+  else {
+    isQueueFull = false
+  }
+  return isQueueFull
+}
+
 const imageAssets = [
   {
     imagePath: "assets/img/CaliCat.png",
