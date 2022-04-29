@@ -104,7 +104,7 @@ const imageAssets = [
   {
     imagePath: "assets/img/PoopEmoji.png",
     octoFilePath: "assets/octo4",
-    title: "Poop Emoji",
+    title: "Poopmoji",
   },
   {
     imagePath: "assets/img/Spinner.png",
@@ -120,5 +120,10 @@ const imageAssets = [
     imagePath: "assets/img/TinyBot.png",
     octoFilePath: "assets/octo4",
     title: "Tiny Bot Set",
+  },
+  {
+    imagePath: "assets/img/microsaur.png",
+    octoFilePath: "assets/octo4",
+    title: "Microsauraus Rex",
   },
 ];
