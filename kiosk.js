@@ -1,11 +1,14 @@
-const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
-const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const KIOSK_API_KEY = "AC2A27BA72C541EFB2E52AAE3D001AB1";
+const KIOSK_HOST_NAME = "http://raspi.local";
 
 async function createCard(imageAssets) {
-  // let isQueueFull = await isPrintQueueFull()
-  // if(isQueueFull){
-  //   return "<h1>Sorry, the print queue is full</h1>"
-  // }
+  let isQueueFull = await isPrintQueueFull()
+  if(isQueueFull){
+    return `<div class='card'>
+    <h1>Sorry, the print queue is full</h1>
+    <button class="btn" onclick="()=>console.log('clicked'); window.location.href='/';" >Refresh</button
+    </div>`
+  }
   const assets = imageAssets.map((i) => {
     return `
     <div class="card" style="margin-bottom: 20px; margin-left: 125px; margin-right: 125px">
@@ -89,7 +92,7 @@ function loadfirstpage(Email, Terms) {
 
 async function isPrintQueueFull(){
   let isQueueFull = false;
-  let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/assign`, {
+  let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/state`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${KIOSK_API_KEY}`,
