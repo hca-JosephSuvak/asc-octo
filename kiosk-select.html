@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk-Selection</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="kiosk.js"></script>
+    <link rel="stylesheet" href="./master-style.css">
+</head>
+<body>
+    <div id="card-div" class="container card-deck">
+    </div>
+    <script>
+        async function render (){
+            const cardHtml = await createCard(imageAssets);
+            element = document.querySelector("#card-div")
+            element.innerHTML = cardHtml
+        }
+        render()
+    </script>
+    
+    <script src="./kiosk-select-test.js"></script>
+</body>
+</html>
