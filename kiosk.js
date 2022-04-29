@@ -1,15 +1,22 @@
+const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
+const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const MAX_QUEUE_LENGTH = 6;
+
 async function createCard(imageAssets) {
-//   let isQueueFull = await isPrintQueueFull()
-//   if(isQueueFull){
-//     return "<h1>Sorry, the print queue is full</h1>"
-//   }
+  let isQueueFull = await isPrintQueueFull()
+  if(isQueueFull){
+    return `<div class='card'>
+    <h1>Sorry, the print queue is full</h1>
+    <button class="btn" onclick="()=>console.log('clicked'); window.location.href='/';" >Refresh</button
+    </div>`
+  }
   const assets = imageAssets.map((i) => {
     return `
     <div class="card" style="margin-bottom: 20px; margin-left: 125px; margin-right: 125px">
       <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
-          <button type="button" class="btn btn-primary" onclick=console.log("${i.octoFilePath}")>Print</button>
+          <button type="button" class="btn btn-primary" onclick=addPrintToQueue("${i.id}")>Print</button>
         </div>
     </div>
     `;
@@ -17,49 +24,57 @@ async function createCard(imageAssets) {
   return assets.join("");
 }
 
-function loadfirstpage(Email, Terms) {
-  let terms = Terms;
-  let email = Email;
 
-  if (email === null) {
-    return;
+async function addPrintToQueue(fileID) {
+  filepath = imageAssets.find(i => i.id===fileID);
+  let searchParams = new URLSearchParams(window.location.search);
+  // searchParams.has('email')
+  let email = searchParams.get("email");
+
+  var form = new FormData();
+  form.append(
+    "items",
+    `[ {
+    \"name\": \"${email}|${filepath}\",
+    \"path\": \"${filepath}\",
+    \"sd\": false,
+    \"job\": \"\",
+    \"run\": 0
   }
-  if (terms === null) {
-    return `
-        < div className = "modal" tabIndex = "-1" >
-        < div className = "modal-dialog" >
-        < div className = "modal-content" >
-        < div className = "modal-header" >
-        < h5 className = "modal-title" > Modal title < /h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-        <div className="modal-body">
-            <p>Modal body text goes here.</p>
-        </div>
-        <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" className="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-    </div>
-    </div>
-    }
-        `;
-  }
+  ]`
+  );
+
+  var settings = {
+    url: `${KIOSK_HOST_NAME}/plugin/continuousprint/add`,
+    method: "POST",
+    timeout: 0,
+    headers: {
+      Authorization: `Bearer ${KIOSK_API_KEY}`,
+    },
+    processData: false,
+    mimeType: "multipart/form-data",
+    contentType: false,
+    data: form,
+    success: function (data) {
+      window.location.href = `kiosk-success.html`;
+    },
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
 async function isPrintQueueFull(){
   let isQueueFull = false;
-  let res = await fetch("http://raspi.local/plugin/continuousprint/state", {
+  let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/state`, {
     method: "GET",
     headers: {
-      Authorization: "Bearer AC2A27BA72C541EFB2E52AAE3D001AB1",
+      Authorization: `Bearer ${KIOSK_API_KEY}`,
     },
   })
   let response = await res.json();
-  if(response.queue.length >= 6){
+  if(response.queue.length >= MAX_QUEUE_LENGTH){
     isQueueFull = true
   }
   else {
@@ -72,58 +87,69 @@ async function isPrintQueueFull(){
 
 const imageAssets = [
   {
+    id: 1,
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo1",
+    octoFilePath: "Cali Cat_55m.gcode",
     title: "Cali Cat",
   },
   {
+    id: 2,
     imagePath: "assets/img/CrystalGem.png",
-    octoFilePath: "assets/octo2",
+    octoFilePath: "Crystal Gem_48m.gcode",
     title: "Crystal Gem",
   },
   {
+    id: 3,
     imagePath: "assets/img/20die.png",
-    octoFilePath: "assets/octo3",
+    octoFilePath: "D20 Dice_59m.gcode",
     title: "20-sided die",
   },
   {
+    id: 4,
     imagePath: "assets/img/Fidgetgear.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Fidget Gear_1h10m.gcode",
     title: "Fidget Gears",
   },
   {
+    id: 4,
     imagePath: "assets/img/FlexSnake.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Flex Snake_1h12m.gcode",
     title: "Flexible Snake",
   },
   {
+    id: 5,
     imagePath: "assets/img/OwlBookmark.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Owl Bookmark_1h2m.gcode",
     title: "Owl Bookmark",
   },
   {
+    id: 6,
     imagePath: "assets/img/PoopEmoji.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Poop Emoji_56m.gcode",
     title: "Poopmoji",
   },
   {
+    id: 7,
     imagePath: "assets/img/Spinner.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Spinner_58m.gcode",
     title: "Spinner Top",
   },
   {
+    id: 8,
     imagePath: "assets/img/XWingKit.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "XWing Kit_57m.gcode",
     title: "X-Wing - Star Fighter",
   },
   {
+    id: 9,
     imagePath: "assets/img/TinyBot.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Tiny Bot_1h3m.gcode",
     title: "Tiny Bot Set",
   },
   {
+    id: 10,
     imagePath: "assets/img/microsaur.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Dino Clip_1h0m.gcode",
     title: "Microsauraus Rex",
   },
 ];

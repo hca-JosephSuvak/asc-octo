@@ -22,10 +22,10 @@ function test() {
     }
 
     let isCardRendering = document.querySelector('.card');
-    if (isCardRendering === null || undefined) {
+    if (isCardRendering === (null || undefined)) {
         console.error('The Cards for OctoPrint Did Not Load. Please check to ensure Bootstrap CDN for v4 is Present and on the page. Also, ensure not commented in kiosk.js')
     }
-    if (isCardRendering[0] !== null || undefined) {
+    if (isCardRendering !== null || undefined) {
         console.log('Bootstrap cards are enabled on the page.')
     }
 }
