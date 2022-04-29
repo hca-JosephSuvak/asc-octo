@@ -1,0 +1,14 @@
+[Unit]
+Description=Administrator Facing Web Services for 3D Printer
+After=network.online.target
+Wants=network.online.target
+
+[Service]
+Environment="HOST=127.0.0.1"
+Environment="PORT=9100"
+Type=simple
+User=pi
+ExecStart=/home/pi/adminweb/bin/adminweb ${PORT}
+
+[Install]
+WantedBy=multi-user.target

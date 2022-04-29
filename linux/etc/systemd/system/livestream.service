@@ -1,0 +1,12 @@
+[Unit]
+Description=Livestream Service for 3D Printer
+After=network.online.target
+Wants=network.online.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/livestream/bin/livestream
+
+[Install]
+WantedBy=multi-user.target

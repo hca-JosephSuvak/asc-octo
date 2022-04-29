@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -d --device=/dev/vchiq --network="host" --name YouTubeLive -ti octoprint/youtubelive:latest http://`ifconfig wlan0 | grep 'inet ' | sed 's/^ *inet/inet/' | cut -d ' ' -f2`/webcam/?action=stream uk4f-d9mz-aaqe-r7mc-dx9f null

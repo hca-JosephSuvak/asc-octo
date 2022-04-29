@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/pi/oprint/bin/python3 -m http.server $1 --directory /home/pi/adminweb/wwroot

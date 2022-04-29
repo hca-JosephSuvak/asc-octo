@@ -1,0 +1,14 @@
+[Unit]
+Description=Customer Facing Web Services for 3D Printer
+After=network.online.target
+Wants=network.online.target
+
+[Service]
+Environment="HOST=127.0.0.1"
+Environment="PORT=9000"
+Type=simple
+User=pi
+ExecStart=/home/pi/kiosk/bin/kiosk ${PORT}
+
+[Install]
+WantedBy=multi-user.target
