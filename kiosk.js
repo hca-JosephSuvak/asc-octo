@@ -87,57 +87,57 @@ async function isPrintQueueFull(){
 const imageAssets = [
   {
     imagePath: "assets/img/CaliCat.png",
-    octoFilePath: "assets/octo1",
+    octoFilePath: "Cali Cat_55m.gcode",
     title: "Cali Cat",
   },
   {
     imagePath: "assets/img/CrystalGem.png",
-    octoFilePath: "assets/octo2",
+    octoFilePath: "Crystal Gem_48m.gcode",
     title: "Crystal Gem",
   },
   {
     imagePath: "assets/img/20die.png",
-    octoFilePath: "assets/octo3",
+    octoFilePath: "D20 Dice_59m.gcode",
     title: "20-sided die",
   },
   {
     imagePath: "assets/img/Fidgetgear.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Fidget Gear_1h10m.gcode",
     title: "Fidget Gears",
   },
   {
     imagePath: "assets/img/FlexSnake.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Flex Snake_1h12m.gcode",
     title: "Flexible Snake",
   },
   {
     imagePath: "assets/img/OwlBookmark.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Owl Bookmark_1h2m.gcode",
     title: "Owl Bookmark",
   },
   {
     imagePath: "assets/img/PoopEmoji.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Poop Emoji_56m.gcode",
     title: "Poopmoji",
   },
   {
     imagePath: "assets/img/Spinner.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Spinner_58m.gcode",
     title: "Spinner Top",
   },
   {
     imagePath: "assets/img/XWingKit.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "XWing Kit_57m.gcode",
     title: "X-Wing - Star Fighter",
   },
   {
     imagePath: "assets/img/TinyBot.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Tiny Bot_1h3m.gcode",
     title: "Tiny Bot Set",
   },
   {
     imagePath: "assets/img/microsaur.png",
-    octoFilePath: "assets/octo4",
+    octoFilePath: "Dino Clip_1h0m.gcode",
     title: "Microsauraus Rex",
   },
 ];
