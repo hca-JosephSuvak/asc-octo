@@ -1,5 +1,5 @@
-const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
-const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const KIOSK_API_KEY = "AC2A27BA72C541EFB2E52AAE3D001AB1";
+const KIOSK_HOST_NAME = "http://raspi.local";
 
 async function createCard(imageAssets) {
   // let isQueueFull = await isPrintQueueFull()
@@ -23,109 +23,22 @@ async function createCard(imageAssets) {
 
 async function addPrintToQueue(filepath) {
 
-  // // fetch("http://raspberrypi.local/plugin/continuousprint/assign", {
-  // //   "method": "POST",
-  // //   "headers": {
-  // //     "cookie": "active_logout_P80=true",
-  // //     "Content-Type": "application/x-www-form-urlencoded",
-  // //     "Authorization": "Bearer FF4D321CD33F47A7BE64ADFD8429B931"
-  // //   },
-  // //   "body": {
-  // //     "items": "[\t\t{\n\t\t\t\"name\": \"clip2.gcode\",\n\t\t\t\"path\": \"clip2.gcode\",\n\t\t\t\"sd\": false,\n\t\t\t\"job\": \"\",\n\t\t\t\"run\": 0,\n\t\t\t\"start_ts\": null,\n\t\t\t\"end_ts\": null,\n\t\t\t\"result\": null,\n\t\t\t\"retries\": null\n\t\t}\n]",
-  // //     "": ""
-  // //   }
-  // // })
-  // // .then(response => {
-  // //   console.log(response);
-  // // })
-  // // .catch(err => {
-  // //   console.error(err);
-  // // });
-
-  // // fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/assign`, {
-  // //   "method": "POST",
-  // //   "headers": {
-  // //     "cookie": "SessionID=57eb928d7cd21e13153959f6601d7dda",
-  // //     "Content-Type": "application/x-www-form-urlencoded",
-  // //     "Authorization": `Bearer ${KIOSK_API_KEY}`
-  // //   },
-  // //   "body": {
-  // //     "items": "[\t\t{\n\t\t\t\"name\": \"clip2.gcode\",\n\t\t\t\"path\": \"clip2.gcode\",\n\t\t\t\"sd\": false,\n\t\t\t\"job\": \"\",\n\t\t\t\"run\": 0,\n\t\t\t\"start_ts\": null,\n\t\t\t\"end_ts\": null,\n\t\t\t\"result\": null,\n\t\t\t\"retries\": null\n\t\t}\n]",
-  // //     "": ""
-  // //   }
-  // // })
-  // // .then(response => {
-  // //   console.log(response);
-  // // })
-  // // .catch(err => {
-  // //   console.error(err);
-  // // });
-
-
-
-  
-  // let data = {
-  //     name: "clip2.gcode",
-  //     path: "clip2.gcode",
-  //     sd: false,
-  //     job: "",
-  //     run: 0
-  //     // start_ts: null,
-  //     // end_ts: null,
-  //     // result: null,
-  //     // retries: null,
-  //   };
-
-    
-  //   body = new FormData();
-    
-  //   // body.append("item", data)
-    
-  //   // for ( var key in data ) {
-  //     //     body.append(key, data[key]);
-  //     // }
-      
-  // let list = [];
-      
-  // list.push(data);
-
-  // body.append("items", list)
-  // const paramsString = new URLSearchParams(data).toString()
-
-  // console.log({data});
-  // console.log({body});
-
-  // let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/assign`, {
-  //   method: "POST",
-  //   headers: {
-  //     Authorization: `Bearer ${KIOSK_API_KEY}`,
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   },
-  //   "body": body,
-  // });
-  // if(res.ok){
-  //   window.alert("you print has been added to the queue!")
-  // }
 var form = new FormData();
 form.append("items", `[ {
-\"name\": \"clip2.gcode\",
-\"path\": \"clip2.gcode\",
-\"sd\": false,
-\"job\": \"\",
-\"run\": 0,
-\"start_ts\": null,
-\"end_ts\": null,
-\"result\": null,
-\"retries\": null
+  \"name\": \"Email+fileName\",
+  \"path\": \"clip1.gcode\",
+  \"sd\": false,
+  \"job\": \"\",
+  \"run\": 0
 }
 ]`);
 
 var settings = {
-  "url": "http://raspberrypi.local/plugin/continuousprint/assign",
+  "url": `${KIOSK_HOST_NAME}/plugin/continuousprint/add`,
   "method": "POST",
   "timeout": 0,
   "headers": {
-    "Authorization": "Bearer FF4D321CD33F47A7BE64ADFD8429B931"
+    "Authorization": `Bearer ${KIOSK_API_KEY}`
   },
   "processData": false,
   "mimeType": "multipart/form-data",
