@@ -43,7 +43,10 @@ var settings = {
   "processData": false,
   "mimeType": "multipart/form-data",
   "contentType": false,
-  "data": form
+  "data": form,
+  success: function( data ) {
+    window.location.href = `kiosk-success.html`;
+  },
 };
 
 $.ajax(settings).done(function (response) {
