@@ -4,19 +4,19 @@ function test() {
     let winLoc = window.location;
 
     //Test 1
-    if(winLoc.pathname === '/kiosk-home.html'){
+    if(winLoc.pathname === '/index.html'){
         console.log('Pathname test was successful')
     }
     else {
         console.error('Pathname has been changed. Please update test or revert code.')
     }
 
-    let isModalRenderable = document.querySelector('.modal-body');
+    let isModalRenderable = document.querySelector('#terms');
     if (isModalRenderable === null || undefined) {
-        console.error('The Modal Body for Octo Did Not Load. Please check to ensure Bootstrap CDN for v4 is Present and on the page. Also, ensure not commented in kiosk-home.html')
+        console.error('The Terms and Conditions for Octo Did Not Load. Ensure not overriden or commented in index.html')
     }
     if (isModalRenderable!== null || undefined) {
-        console.log('Modal is enabled on the page.')
+        console.log('Terms and Conditions Loaded.')
     }
 
     

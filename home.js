@@ -8,11 +8,11 @@ document.querySelector("#submit-email").addEventListener("click", e => {
       submitEmail();
     }
     else{
-      window.alert("Please provide a valid email address.")
+      window.alert("Please provide a valid email address.");
     }
   }
   else {
-    window.alert("You must agree to the terms in order to print")
+    window.alert("You must agree to the terms in order to print");
   }
 });
 
