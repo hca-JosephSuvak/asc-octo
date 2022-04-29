@@ -1,6 +1,5 @@
 const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
 const KIOSK_HOST_NAME = "http://raspberrypi.local";
-
 async function createCard(imageAssets) {
   let isQueueFull = await isPrintQueueFull()
   if(isQueueFull){
@@ -25,36 +24,42 @@ async function createCard(imageAssets) {
 
 
 async function addPrintToQueue(filepath) {
+  let searchParams = new URLSearchParams(window.location.search);
+  // searchParams.has('email')
+  let email = searchParams.get("email");
 
-var form = new FormData();
-form.append("items", `[ {
-  \"name\": \"Email+fileName\",
-  \"path\": \"clip1.gcode\",
-  \"sd\": false,
-  \"job\": \"\",
-  \"run\": 0
-}
-]`);
+  var form = new FormData();
+  form.append(
+    "items",
+    `[ {
+    \"name\": \"${email}|${filepath}\",
+    \"path\": \"${filepath}\",
+    \"sd\": false,
+    \"job\": \"\",
+    \"run\": 0
+  }
+  ]`
+  );
 
-var settings = {
-  "url": `${KIOSK_HOST_NAME}/plugin/continuousprint/add`,
-  "method": "POST",
-  "timeout": 0,
-  "headers": {
-    "Authorization": `Bearer ${KIOSK_API_KEY}`
-  },
-  "processData": false,
-  "mimeType": "multipart/form-data",
-  "contentType": false,
-  "data": form,
-  success: function( data ) {
-    window.location.href = `kiosk-success.html`;
-  },
-};
+  var settings = {
+    url: `${KIOSK_HOST_NAME}/plugin/continuousprint/add`,
+    method: "POST",
+    timeout: 0,
+    headers: {
+      Authorization: `Bearer ${KIOSK_API_KEY}`,
+    },
+    processData: false,
+    mimeType: "multipart/form-data",
+    contentType: false,
+    data: form,
+    success: function (data) {
+      window.location.href = `kiosk-success.html`;
+    },
+  };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
 function loadfirstpage(Email, Terms) {
