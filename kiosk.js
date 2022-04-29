@@ -1,20 +1,54 @@
+const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
+const KIOSK_HOST_NAME = "http://raspberrypi.local";
+
 async function createCard(imageAssets) {
-//   let isQueueFull = await isPrintQueueFull()
-//   if(isQueueFull){
-//     return "<h1>Sorry, the print queue is full</h1>"
-//   }
+  // let isQueueFull = await isPrintQueueFull()
+  // if(isQueueFull){
+  //   return "<h1>Sorry, the print queue is full</h1>"
+  // }
   const assets = imageAssets.map((i) => {
     return `
     <div class="card" style="margin-bottom: 20px; margin-left: 125px; margin-right: 125px">
       <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
-          <button type="button" class="btn btn-primary" onclick=console.log("${i.octoFilePath}")>Print</button>
+          <button type="button" class="btn btn-primary" onclick=addPrintToQueue("${i.octoFilePath}")>Print</button>
         </div>
     </div>
     `;
   });
   return assets.join("");
+}
+
+
+async function addPrintToQueue(filepath) {
+
+var form = new FormData();
+form.append("items", `[ {
+  \"name\": \"Email+fileName\",
+  \"path\": \"clip1.gcode\",
+  \"sd\": false,
+  \"job\": \"\",
+  \"run\": 0
+}
+]`);
+
+var settings = {
+  "url": `${KIOSK_HOST_NAME}/plugin/continuousprint/add`,
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Authorization": `Bearer ${KIOSK_API_KEY}`
+  },
+  "processData": false,
+  "mimeType": "multipart/form-data",
+  "contentType": false,
+  "data": form
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 }
 
 function loadfirstpage(Email, Terms) {
@@ -52,10 +86,10 @@ function loadfirstpage(Email, Terms) {
 
 async function isPrintQueueFull(){
   let isQueueFull = false;
-  let res = await fetch("http://raspi.local/plugin/continuousprint/state", {
+  let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/assign`, {
     method: "GET",
     headers: {
-      Authorization: "Bearer AC2A27BA72C541EFB2E52AAE3D001AB1",
+      Authorization: `Bearer ${KIOSK_API_KEY}`,
     },
   })
   let response = await res.json();
