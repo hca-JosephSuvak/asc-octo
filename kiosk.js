@@ -1,5 +1,5 @@
-const KIOSK_API_KEY = "AC2A27BA72C541EFB2E52AAE3D001AB1";
-const KIOSK_HOST_NAME = "http://raspi.local";
+const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
+const KIOSK_HOST_NAME = "http://raspberrypi.local";
 
 async function createCard(imageAssets) {
   // let isQueueFull = await isPrintQueueFull()
