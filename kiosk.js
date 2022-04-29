@@ -1,11 +1,11 @@
 async function createCard(imageAssets) {
-  let isQueueFull = await isPrintQueueFull()
-  if(isQueueFull){
-    return "<h1>Sorry, the print queue is full</h1>"
-  }
+//   let isQueueFull = await isPrintQueueFull()
+//   if(isQueueFull){
+//     return "<h1>Sorry, the print queue is full</h1>"
+//   }
   const assets = imageAssets.map((i) => {
     return `
-    <div class="card">
+    <div class="card" style="margin-bottom: 20px; margin-left: 125px; margin-right: 125px">
       <img src="${i.imagePath}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${i.title}</h5>
@@ -112,9 +112,9 @@ const imageAssets = [
     title: "Spinner Top",
   },
   {
-    imagePath: "assets/img/StegosaurusCard.png",
+    imagePath: "assets/img/XWingKit.png",
     octoFilePath: "assets/octo4",
-    title: "Dino Model Set",
+    title: "X-Wing - Star Fighter",
   },
   {
     imagePath: "assets/img/TinyBot.png",
