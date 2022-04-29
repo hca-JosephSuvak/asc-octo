@@ -1,5 +1,7 @@
 const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
 const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const MAX_QUEUE_LENGTH = 6;
+
 async function createCard(imageAssets) {
   let isQueueFull = await isPrintQueueFull()
   if(isQueueFull){
@@ -71,7 +73,7 @@ async function isPrintQueueFull(){
     },
   })
   let response = await res.json();
-  if(response.queue.length >= 6){
+  if(response.queue.length >= MAX_QUEUE_LENGTH){
     isQueueFull = true
   }
   else {
