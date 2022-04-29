@@ -1,5 +1,5 @@
-const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
-const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const KIOSK_API_KEY = "AC2A27BA72C541EFB2E52AAE3D001AB1";
+const KIOSK_HOST_NAME = "http://raspi.local";
 const MAX_QUEUE_LENGTH = 6;
 
 async function createCard(imageAssets) {
@@ -26,7 +26,7 @@ async function createCard(imageAssets) {
 
 
 async function addPrintToQueue(fileID) {
-  filepath = imageAssets.find(i => i.id===fileID);
+  filepath = imageAssets.find(i => i.id==fileID).octoFilePath;
   let searchParams = new URLSearchParams(window.location.search);
   // searchParams.has('email')
   let email = searchParams.get("email");
