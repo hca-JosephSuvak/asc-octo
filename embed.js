@@ -53,3 +53,18 @@ function onPlayerStateChange(event) {
 function stopVideo() {
     player.stopVideo();
 }
+
+/* UNIT TESTS*/
+if (tag.src = "http://www.youtube.com/iframe_api") {
+    console.log('Iframe URL is correct.')
+}
+else {
+    console.warn('The YT iFrame URL has changed. Please ensure this is correct and change on line 19 OR update the unit test.')
+}
+
+if (globVideoID !== (null || undefined)) {
+    console.log('YT Livestream is enabled.')
+}
+else {
+    console.error('The YT reference URL has changed. Please ensure this is correct and change on line 1 --- OR update the unit test.')
+}

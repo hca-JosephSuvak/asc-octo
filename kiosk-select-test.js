@@ -1,4 +1,4 @@
-function main() {
+function test() {
     console.log(window.location)
     //Global variable 
     let winLoc = window.location;
@@ -30,4 +30,4 @@ function main() {
     }
 }
 
-main();
+test();
