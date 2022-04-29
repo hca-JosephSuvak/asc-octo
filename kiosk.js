@@ -26,7 +26,7 @@ async function createCard(imageAssets) {
 
 
 async function addPrintToQueue(fileID) {
-  filepath = imageAssets.find(i => i.id===fileID);
+  filepath = imageAssets.find(i => i.id==fileID).octoFilePath;
   let searchParams = new URLSearchParams(window.location.search);
   // searchParams.has('email')
   let email = searchParams.get("email");
