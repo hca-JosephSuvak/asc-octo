@@ -4,7 +4,7 @@ function test() {
     let winLoc = window.location;
 
     //Test 1
-    if(winLoc.pathname === '/index.html'){
+    if(winLoc.pathname !== '/index.html'){
         console.log('Pathname test was successful')
     }
     else {
