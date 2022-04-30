@@ -1,5 +1,5 @@
-const KIOSK_API_KEY = "FF4D321CD33F47A7BE64ADFD8429B931";
-const KIOSK_HOST_NAME = "http://raspberrypi.local";
+const KIOSK_API_KEY = "AC2A27BA72C541EFB2E52AAE3D001AB1";
+const KIOSK_HOST_NAME = "http://raspi.local";
 const MAX_QUEUE_LENGTH = 6;
 
 async function createCard(imageAssets) {
@@ -58,6 +58,11 @@ async function addPrintToQueue(fileID) {
     success: function (data) {
       window.location.href = `kiosk-success.html`;
     },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      alert("Failed to send print to queue.")
+      // alert("Status: " + textStatus);
+      // alert("Error: " + errorThrown);
+    },
   };
 
   $.ajax(settings).done(function (response) {
@@ -65,7 +70,7 @@ async function addPrintToQueue(fileID) {
   });
 }
 
-async function isPrintQueueFull(){
+async function isPrintQueueFull() {
   let isQueueFull = false;
   let res = await fetch(`${KIOSK_HOST_NAME}/plugin/continuousprint/state`, {
     method: "GET",
@@ -73,14 +78,27 @@ async function isPrintQueueFull(){
       Authorization: `Bearer ${KIOSK_API_KEY}`,
     },
   })
-  let response = await res.json();
-  if(response.queue.length >= MAX_QUEUE_LENGTH){
-    isQueueFull = true
-  }
-  else {
-    isQueueFull = false
-  }
-  return isQueueFull
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      return res.json();
+    })
+    .then((response) => {
+      if (response.queue.length >= MAX_QUEUE_LENGTH) {
+        isQueueFull = true;
+      } else {
+        isQueueFull = false;
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    });
+  
+  return isQueueFull;
 }
 
 
