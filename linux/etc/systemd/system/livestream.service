@@ -7,6 +7,7 @@ Wants=network.online.target
 Type=simple
 User=pi
 ExecStart=/home/pi/livestream/bin/livestream
+ExecStop=/home/pi/livestream/bin/stop-livestream
 
 [Install]
 WantedBy=multi-user.target
