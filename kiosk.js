@@ -7,7 +7,7 @@ async function createCard(imageAssets) {
   if(isQueueFull){
     return `<div class='card'>
     <h1>Sorry, the print queue is full</h1>
-    <button class="btn" onclick="()=>console.log('clicked'); window.location.href='/';" >Refresh</button
+    <button class="btn" onclick="()=>console.log('clicked'); window.location.href='/kiosk/';" >Refresh</button
     </div>`
   }
   const assets = imageAssets.map((i) => {
@@ -26,7 +26,7 @@ async function createCard(imageAssets) {
 
 
 async function addPrintToQueue(fileID) {
-  filepath = imageAssets.find(i => i.id===fileID);
+  filepath = imageAssets.find(i => i.id==fileID).octoFilePath;
   let searchParams = new URLSearchParams(window.location.search);
   // searchParams.has('email')
   let email = searchParams.get("email");
